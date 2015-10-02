@@ -12,28 +12,21 @@
 class DroneMotor
 {
   public:
-    DroneMotor(int pinA, int pinB);
-    int flapTime = 500; //time motor moves right/left
-    int bufferTime = 400; //time waiting to get to 0 position
-    int timer = millis(); //current time
-    int lastFlap; //last time motor moved right/left
-    int flapStart; //time current motor movement started
+    static int count = 0;
+    Boolean onOff = false; //is motor active?
+    int state;  //current state of the motor 0=left 1=neutral 2=right
 
-    void flapping(boolean onOff);
+    int flapTime = 500; //time motor moves left or right;
+    int neutralTime = 300; //time motor remains neutral to get pushed back by spring
 
-    void motorOn(boolean leftRight);
-
-    void motorTest();
+    DroneMotor();
 
 
   private:
-    int _pinA;
-    int _pinB;
-    boolean dir = true; //direction of motor
+    int _time;
+    int _startState;
 
-    void _waiting(int waitingTime);
-    int _startWaiting;
-    int _waitingTime;
+    int _oldOnOff = onOff; //check if motor got turned on/off *huehuehue*
 };
 
 #endif
