@@ -12,15 +12,15 @@
 class DroneMotor
 {
   public:
-    static int count = 0;
-    Boolean onOff = false; //is motor active?
+    int count = 0;
+    bool onOff = false; //is motor active?
     int state;  //current state of the motor 0=left 1=neutral 2=right
 
     int flapTime = 500; //time motor moves left or right;
     int neutralTime = 300; //time motor remains neutral to get pushed back by spring
 
     DroneMotor();
-
+    void update();
 
   private:
     int _time;

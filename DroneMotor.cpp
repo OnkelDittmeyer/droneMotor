@@ -15,7 +15,9 @@ DroneMotor::DroneMotor()
 
 }
 
-DroneMotor::update(){
+
+
+void DroneMotor::update(){
 
   if(onOff){
     if(!_oldOnOff){
