@@ -14,15 +14,21 @@ class DroneMotor
   public:
     int count = 0;
     bool onOff = false; //is motor active?
-    int state;  //current state of the motor 0=left 1=neutral 2=right
+    int state = 1;  //current state of the motor 0=left 1=neutral 2=right
 
-    int flapTime = 500; //time motor moves left or right;
+    int flapTime = 300; //time motor moves left or right;
     int neutralTime = 300; //time motor remains neutral to get pushed back by spring
 
+    int left = 0;
+    int right = 0;
+
     DroneMotor();
+    void setRegNum(int leftNum, int rightNum);
     void update();
 
+
   private:
+    int _dir;
     int _time;
     int _startState;
 

@@ -10,12 +10,15 @@
 
 DroneMotor::DroneMotor()
 {
-  state = 0;
   ++count;
+
 
 }
 
-
+void DroneMotor::setRegNum(int leftNum, int rightNum){
+  left = leftNum;
+  right = rightNum;
+}
 
 void DroneMotor::update(){
 
@@ -28,23 +31,31 @@ void DroneMotor::update(){
     _time = millis();
     switch(state){
       case 0:
+        //flap right
         if(_time - _startState >= flapTime){
           ++state;
           _startState = millis();
+          _dir = true;
           break;
         }
         break;
       case 1:
+        // gets pushed back by spring
         if(_time - _startState >= neutralTime){
-          ++state;
+          if(_dir){
+            ++state;
+          }else{
+            --state;
+          }
           _startState = millis();
-          break;
         }
         break;
       case 2:
+        // flap left
         if(_time - _startState >= flapTime){
-          ++state;
+          --state;
           _startState = millis();
+          _dir = false;
           break;
         }
         break;
