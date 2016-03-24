@@ -22,17 +22,25 @@ class DroneMotor
     int left = 0;
     int right = 0;
 
+    bool idleMode = false;
+    long idleDuration = 0;
+    long idleDelay = 0;
+
     DroneMotor();
     void setRegNum(int leftNum, int rightNum);
     void update();
+    void idle(long duration, long delay);
 
 
   private:
     int _dir;
-    int _time;
+    long _time;
     int _startState;
 
     int _oldOnOff = onOff; //check if motor got turned on/off *huehuehue*
+
+    long _idleStartTime;
+    bool _idleMode;
 };
 
 #endif
