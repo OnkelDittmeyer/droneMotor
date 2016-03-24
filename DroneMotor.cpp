@@ -1,6 +1,7 @@
 /*
   DroneMotor.cpp - Library for Agatha Haines BioDrone.
   Created by Marcel Helmer, September 5th, 2015.
+  Updated 24.3.2016
   Released into the public domain.
 */
 
